@@ -1,0 +1,8 @@
+# Data-Analytics
+SELECT *
+INTO ThermTempHourly
+FROM (
+    SELECT *, ROW_NUMBER() OVER (ORDER BY Row_1) AS row_num
+    FROM ThermTemp
+) t
+WHERE t.row_num % 12 = 1
