@@ -1,0 +1,11 @@
+# Data-Analytics
+
+WITH cte AS (
+  SELECT 
+    column1,
+    LAG(column1) OVER (ORDER BY id) AS prev_column1
+  FROM your_table
+)
+UPDATE cte
+SET column1 = prev_column1
+WHERE column1 IS NULL;
